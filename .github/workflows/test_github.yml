@@ -15,7 +15,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-east-1
-          role-to-assume: arn:aws:iam::843583229707:role/eec-github-actions-poc-role
+          role-to-assume: arn:aws:iam::843583229707:role/eec-github-actions-personal-poc-role
           role-session-name: POCSessionGitHub
       - name: Get List of all Buckets
         run: |
