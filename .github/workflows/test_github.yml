@@ -1,0 +1,22 @@
+
+name: poc-github-actions-oidc-provider
+run-name: ${{ github.actor }} is checking GitHub Actions
+on:
+  workflow_dispatch:
+jobs:
+  get-caller-identity:
+    name: Get Caller Identity
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-east-1
+          role-to-assume: arn:aws:iam::843583229707:role/eec-github-actions-poc-role
+          role-session-name: POCSessionGitHub
+      - name: Get List of all Buckets
+        run: |
+          aws s3 ls
